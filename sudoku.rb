@@ -51,7 +51,9 @@ class SudokuGame
   end
 
   def process_parameters
+    board.render
     pos_to_val(retrieve_pos_from_ui, retrieve_value_from_ui)
+
   end
 
   def pos_to_val(p, v)
