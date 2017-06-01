@@ -20,7 +20,7 @@ class Board
   def initialize(grid = self.empty_grid)
     @grid = grid
   end
-
+  #
   def [](pos)
     x, y = pos
     grid[x][y]
@@ -31,7 +31,7 @@ class Board
     tile = grid[x][y]
     tile.value = value
   end
-
+  
   def columns
     rows.transpose
   end
@@ -55,7 +55,6 @@ class Board
     rows.all? { |row| solved_set?(row) } &&
       columns.all? { |col| solved_set?(col) } &&
       squares.all? { |square| solved_set?(square) }
-    end
   end
 
   def solved_set?(tiles)
