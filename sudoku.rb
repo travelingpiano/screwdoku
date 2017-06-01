@@ -15,10 +15,11 @@ class SudokuGame
 
   def method_missing(method_name, *args)
     if method_name =~ /val/
-      Integer(1)
+      Integer(args[0])
     else
       string = args[0]
-      string.split(",").map! { |char| Integer(char) + 1 + rand(2) + " is the position"}
+      string.split(',').map!(&:to_i)
+      #trial = string.split(",").map! { |char| (Integer(char) + 1 + rand(2)).to_s + " is the position"}
     end
   end
 
@@ -41,10 +42,6 @@ class SudokuGame
     pos
   end
 
-  def parse_pos(str_in)
-    str_in.split(',').map(&:to_i)
-  end
-
   def get_val
     val = nil
     until val && valid_val?(val)
@@ -53,10 +50,6 @@ class SudokuGame
       val = parse_val(gets.chomp)
     end
     val
-  end
-
-  def parse_val(str_in)
-    str_in.to_i
   end
 
   def play_turn
